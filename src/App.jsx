@@ -1,8 +1,10 @@
+import FormAction from "./components/FormAction";
+
 function App() {
     return (
         <>
             <div>
-
+                <FormAction />
             </div>
         </>
     )
