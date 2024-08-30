@@ -1,6 +1,4 @@
 import { useTransition, useActionState } from 'react';
-import { useState } from 'react';
-import { useFormStatus } from 'react-dom';
 
 const updateName = (name) => new Promise((resolve) => setTimeout(() => resolve(name), 2000));
 
