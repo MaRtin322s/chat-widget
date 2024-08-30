@@ -1,4 +1,4 @@
-import { useTransition } from 'react';
+import { useTransition, useActionState } from 'react';
 import { useState } from 'react';
 import { useFormStatus } from 'react-dom';
 
@@ -12,11 +12,21 @@ function FormAction() {
             console.log(name);
         });
     }
-
+    
+    const formHandler = async (previousState, formData) => {
+        const name = await updateName(formData.get('name'));
+        previousState.name = name;
+        
+        return previousState;
+    }
+    
+    const [state, formAction, isPending] = useActionState(formHandler, { name: ''});
+    console.log(state);
+    
     return (
-        <form action={submitAction}>
+        <form>
             <input type="text" name="name" autoComplete={'true'} />
-            <button disabled={pending ? true : false}>Submit</button>
+            <button formAction={formAction} disabled={isPending ? true : false}>Submit</button>
         </form>
     );
 }
