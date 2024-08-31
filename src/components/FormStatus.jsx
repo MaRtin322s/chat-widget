@@ -1,6 +1,5 @@
 import { useFormStatus } from 'react-dom';
 
-
 const updateName = (name) => new Promise(resolve => setTimeout(() => resolve(name), 2000));
 
 function SubmitButton() {
